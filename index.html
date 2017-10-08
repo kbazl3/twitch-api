@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="describe this site">
+        <meta name="keywords" content="keywords for this site">
+        <meta name="author" content="Kyle Barlow">
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body ng-controller="mainCtrl">
+
+
+        <div class="twitch">
+            <h2>Free Code Camp's Twitch</h2>
+            <img ng-src="https://pbs.twimg.com/profile_images/692531829287567360/ytP7U362.png" alt="">
+
+            <div class="streaming" ng-show="streaming">
+                <h2>Free Code Camp is Streaming! <a href="https://www.twitch.tv/{{twitch.data.stream.channel.name}}">Watch HERE!</a></h2>
+                <ul>
+                    <li><b>What are they streaming?: </b>{{twitch.data.stream.game}}</li>
+                    <li><b>Stream started: </b>{{twitch.data.stream.created_at | date:'medium'}}</li>
+                    <li><b>Number of viewers: </b>{{twitch.data.stream.viewers}}</li>
+                </ul>
+                <img ng-src="{{twitch.data.stream.preview.large}}" alt="">
+            </div>
+            <div class="not-streaming" ng-show="notStreaming">
+                <h2>Free Code Camp is not streaming right now :(</h2>
+                <p>Follow them on <a href="https://twitter.com/freeCodeCamp">Twitter</a> to get updates</p>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+        <script src="./app.js"></script>
+        <script src="/mainCtrl.js" charset="utf-8"></script>
+        <script src="/mainSvc.js" charset="utf-8"></script>
+  </body>
+</html>
